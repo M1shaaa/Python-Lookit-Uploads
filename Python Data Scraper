@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Apr 10 14:11:29 2023
+
+@author: michaelokeeffe
+"""
+
+import requests
+from bs4 import BeautifulSoup
+import csv
+import os
+
+# set up the URL and file path
+url = "https://projects.jsonline.com/database/2021/2/university-wisconsin-professor-coach-salary-2020.html"
+file_path = os.path.expanduser("~/Documents/Python/UW_salaries.csv")
+
+# send a request to the website and get the HTML content
+response = requests.get(url, verify=False)
+html_content = response.content
+
+# parse the HTML content with Beautiful Soup
+soup = BeautifulSoup(html_content, 'html.parser')
+
+# find the table containing the data
+table = soup.find('table', {'class': 'datatable'})
+
+# if the table is not found, print the HTML content and raise an error
+if table is None:
+    print(html_content)
+    raise ValueError("Could not find the table containing the data")
+
+# create a CSV file and write the data to it
+with open(file_path, 'w', newline='', encoding='utf-8') as f:
+    writer = csv.writer(f)
+    for row in table.findAll('tr'):
+        headers = []
+        for header in row.findAll('th'):
+            headers.append(header.text.strip())
+        if headers:
+            writer.writerow(headers)
+            continue
+        cols = []
+        for col in row.findAll('td'):
+            cols.append(col.text.strip())
+        if cols:
+            writer.writerow(cols)
