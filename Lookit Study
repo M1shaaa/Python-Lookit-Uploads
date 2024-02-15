@@ -1,0 +1,443 @@
+{"frames": {
+    
+    "text-instructions1": {
+            "kind": "exp-lookit-instructions",
+            "blocks": [{
+                    "title": "Thank you for your interest in our study!",
+                    "text": "Before we get started, make sure your child is sitting with you and you can both see the screen!\n \nHere's a quick summary of what's about to happen:",
+                    "listblocks": [{
+                            "text": "1. Webcam Setup and Video Consent. First, we'll be checking that your webcam is working. Then you and your child will give your consent to participate in this research."
+                        },
+                        {
+                            "text": "2. Study Overview: Here, you can read a little more about what your child will be doing in this study, along with some other important details about the game."
+                        },
+                        {
+                            "text": "3. Start the Study: When you click the 'Start the game!' button on the Study Overview page, the study will begin! This study will take about 15 minutes in total."
+                        }
+                    ]
+                },
+                {
+                    "text": "Thank you so much for helping us with our science! We hope you and your child have fun."
+                }
+            ],
+            "showWebcam": false,
+            "nextButtonText": "Continue to Webcam Setup",
+            "showPreviousButton": false
+        },
+        
+        
+        "video-config": {
+            "kind": "exp-video-config",
+            "troubleshootingIntro": "Please see below for common troubleshooting issues and solutions:"
+        },
+        
+        
+        "video-consent": {
+            "kind": "exp-lookit-video-consent",
+            "template": "consent_005",
+            "PIName": "Rosie Aboody",
+            "institution": "Harvard University",
+            "PIContact": "Rosie Aboody at rotem_aboody@gse.harvard.edu",
+            "purpose": "In this study, we want to learn more about how children think about other people's minds and thoughts.",
+            "procedures": "Your child will watch seven stories about different characters. During the stories, we will ask your child what they think the characters will do, feel, think or believe. For example, your child may learn which snacks a character likes and which he doesn't, and then we will ask your child to predict which snack the character will go get",
+            "risk_statement": "There are no expected risks if you participate in the study.",
+            "payment": "After you finish the study, we will email you a $5 Amazon gift card within approximately one week. To be eligible for the gift card, your child must meet all eligibility criteria (e.g., be in the age range for this study), you need to submit a valid consent statement, and we need to see that there is a child with you. Additionally, your child may only participate in this study once in order to be eligible for compensation. However, even if you do not finish the whole study or we are not able to use your child's data, we will still send a gift card! There are no other direct benefits to you or your child from participating, but we hope you will enjoy the experience.",
+            "datause": "We are primarily interested in the ratings your child provides. A research assistant may also watch your videos to code any spontaneous speech your child generates during the task.",
+            "include_databrary": true,
+            "gdpr": false,
+            "research_rights_statement": "You are not waiving any legal claims, rights or remedies because of your participation in this research study.  If you feel you have been treated unfairly, or you have questions regarding your rights as a research subject, you may contact Harvard's Committee on the Use of Human Subjects (cuhs@harvard.edu)."
+        },
+
+        "start-recording": {
+            "kind": "exp-lookit-start-recording",
+            "displayFullscreen": true
+        },
+        
+        "stop-recording": {
+            "kind": "exp-lookit-stop-recording",
+            "displayFullscreen": true
+        },
+       
+        "parent-video-intro": {
+            
+            "kind": "exp-lookit-video",
+            "video": {
+                "position": "fill",
+                "source": "Parent_intro"
+            },
+            
+            "autoProceed": false,
+            "backgroundColor": "black",
+            "nextButtonText": "Getting in position",
+            "requireVideoCount": 1,
+            "doRecording": false,
+            "baseDir": "https://raw.githubusercontent.com/raboody/lookit-Wellman-replication/master/",
+            "videoTypes": [
+                "webm",
+                "mp4"
+            ]
+        },
+        
+       
+       "positioning-config": 
+       {
+            "kind": "exp-video-config-quality",
+            "title": "It's time to get your child and get in position!",
+            "introText": "",
+            "showRecordMenu": false,
+            "requireTestVideo": false,
+            "completedItemText": "Got it!",
+            "instructionBlocks": [
+                {
+                    "title": "Center your webcam if needed",
+                    "text": "<strong>Make sure the webcam you're using is roughly centered</strong> relative to this monitor. This makes it much easier for us to see your video.",
+                    "image": {
+                        "src": "https://raw.githubusercontent.com/syzhang6/lookit/master/img/centering.png",
+                        "alt": "Example images of using centered external webcam on monitor or built-in webcam on laptop."
+                    }
+                },
+                {
+                    "title": "Make sure you can clearly see your child's face",
+                    "text": "Take a few moments to get settled and make sure your child's face is clearly visible in the webcam preview to the right. You may need to adjust the webcam angle or turn on a light to make sure his or her face is visible."
+                },
+                {
+                    "text": "The green button down below will start the game. Press the button once you and your child are ready to go!",
+                    "title": "When you're ready"
+                }
+            ],
+            "requireItemConfirmation": true,
+            "recordingInstructionText": ""
+        },
+        
+        
+        
+        "child-video-intro": {
+            "kind": "exp-lookit-video",
+            "video": {
+                "position": "fill",
+                "source": "Child_intro"
+            },
+            "autoProceed": false,
+            "backgroundColor": "black",
+            "requireVideoCount": 1,
+            "doRecording": false,
+            "baseDir": "https://raw.githubusercontent.com/raboody/lookit-Wellman-replication/master/",
+            "videoTypes": [
+                "webm",
+                "mp4"
+            ]
+        },
+        
+        "exit-survey": 
+        {
+            "kind": "exp-lookit-exit-survey",
+            "debriefing": {
+                "title": "Thank you!",
+                "blocks": [{
+                        "text": "You should receive your gift card within the next week."
+                    },
+                    {
+                        "text": "If you have any questions, comments, or concerns about your participation in this study, please email Rosie at rotem_aboody@gse.harvard.edu."
+                    },
+                    
+                    {
+                        "text":"For additional information about the purpose of this study, please read the paragraph below. Otherwise, you can click the green 'Exit' button below to finish the game and close the page. <br>  <br>"
+                    },
+                    {
+                        "text": "Placeholder!!!! Thank you for helping us learn more about how children think about other minds! We could not do our work without families like yours, and we genuinely appreciate your help! <br>  <br> To learn more about our research in general, check out our lab websites: <a href='https://projects.iq.harvard.edu/ccdlab' rel='noopener' target='_blank'>CoCoDev @ HGSE</a>, and <a href='https://cocodev.fas.harvard.edu/' rel='noopener' target='_blank'>CoCoDev @ FAS</a>."
+                    }
+                ]
+            }
+        },
+    
+      "thankyou": 
+        {
+            
+            "kind": "exp-lookit-video",
+            "video": {
+                "position": "fill",
+                "source": "Thank_you_short"
+            },
+            "autoProceed": true,
+            "backgroundColor": "black",
+            "nextButtonText": "Getting in position",
+            "requireVideoCount": 1,
+            "doRecording": false,
+            "baseDir": "https://raw.githubusercontent.com/raboody/lookit-Wellman-replication/master/",
+            "videoTypes": [
+                "webm",
+                "mp4"
+            ]
+        },
+    
+        "Blicket": 
+         
+        {
+            "kind": "group",
+            "frameList": 
+            [
+                 
+                {
+                    "kind": "exp-lookit-video",
+                    "id": "Slide-1",
+                    "video": {
+                        "source": "Slide 1",
+                        "top": 1,
+                        "left": 7,
+                        "width": 86 
+                    }
+                },
+                
+                {
+                    "kind": "exp-lookit-video",
+
+                    "id": "Slide-2",
+                   
+                    "video": {
+                        "source": "Slide 2",
+                         "top": 1,
+                        "left": 7,
+                        "width": 86 
+                    }
+                },
+                
+                {
+                    "kind": "exp-lookit-video",
+
+                    "id": "Slide-3",
+                   
+                    "video": {
+                        "source": "Slide 3",
+                        "top": 1,
+                        "left": 7,
+                        "width": 86 
+                    }
+                },
+                
+                {
+                    "kind": "exp-lookit-video",
+
+                    "id": "Slide-4-control-q-1",
+            
+                    "video": {
+                        "source": "Slide-4-control-q-1",
+                        "top": 1,
+                        "left": 7,
+                        "width": 86 
+                    }
+                 },
+                 
+                  {
+                    "kind": "exp-lookit-images-audio",
+                    "id": "Slide-5-control-q-1",
+                    
+                    "autoProceed": false,
+                    "choiceRequired": true,
+                    
+                    "audio": "test trial 1 answers",
+                    "images": [
+                        {
+                            "id": "StorybookIllustration",
+                            "src": "Slide 6.png",
+                            "top": 0,
+                            "left": 0,
+                            "width": 100,
+                            "nonChoiceOption": true
+                        },
+                        
+                        {
+                            "id": "left",
+                            "src": "slide 6 answer 1.png",
+                            "top": ".5",
+                            "left": "75.5",
+                            "width": "24.3",
+                            "nonChoiceOption": false,
+                            "correct": true,
+                            "displayDelayMs": 6000
+                        },
+                          {
+                            "id": "right",
+                            "src": "slide 6 answer 2.png",
+                            "top": ".5",
+                            "left": ".5",
+                            "width": "24.3",
+                            "nonChoiceOption": false,
+                            "correct": true,
+                            "displayDelayMs": 2000
+                        }
+                        
+                    ]
+                    
+                },
+                
+                {
+                    "kind": "exp-lookit-video",
+
+                    "id": "Slide-6-control-q-2",
+                    
+                    "video": {
+                        "source": "Slide-6-control-q-2",
+                        "top": 1,
+                        "left": 7,
+                        "width": 86 
+                    }
+                },
+                 
+                {
+                    "kind": "exp-lookit-images-audio",
+                    "id": "slide-7-control-question-2",
+                    
+                    "autoProceed": false,
+                    "choiceRequired": true,
+                    
+                    "audio": "test trial 2 answers",
+                    "images": [
+                        {
+                            "id": "storybookIllustration",
+                            "src": "Slide 7.png",
+                            "top": 0,
+                            "left": 0,
+                            "width": 100,
+                            "nonChoiceOption": true
+                        },
+                        
+                        {
+                            "id": "left",
+                            "src": "slide 7 answer 1.png",
+                            "top": ".5",
+                            "left": "75.5",
+                            "width": "24.3",
+                            "nonChoiceOption": false,
+                            "correct": true,
+                            "displayDelayMs": 3000
+                        },
+                        
+                        {
+                            "id": "right",
+                            "src": "slide 7 answer 2.png",
+                            "top": ".5",
+                            "left": ".5",
+                            "width": "24.3",
+                            "nonChoiceOption": false,
+                            "correct": true,
+                            "displayDelayMs": 2000
+                        }
+                        
+                    ]
+                    
+                },
+                
+                {
+                    "kind": "exp-lookit-video",
+
+                    "id": "Slide 4",
+                   
+                    "video": {
+                        "source": "Slide 4",
+                        "top": 1,
+                        "left": 7,
+                        "width": 86 
+                    }
+                },
+                
+                {
+                    "kind": "exp-lookit-images-audio",
+                    "id": "Blicket-5",
+                    
+                    "choiceRequired": true,
+                    "autoProceed": false,
+                    
+                    "audio": "Blicket-5",
+                    "images": [
+                        {
+                            "id": "StorybookIllustration",
+                            "src": "Slide 10.png",
+                            "nonChoiceOption": true,
+                            "top": 1,
+                            "left": 7,
+                            "width": 86
+                        },
+                        
+                        {
+                            "id": "top-right",
+                            "src": "top-right.png",
+                            "top": "1.5",
+                            "left": "68.5",
+                            "width": "24.3",
+                            "nonChoiceOption": false,
+                            "correct": true,
+                            "displayDelayMs": 17000
+                        },
+                        
+                        {
+                            "id": "bottom-right",
+                            "src": "bottom-right.png",
+                            "top": "49.5",
+                            "left": "68.5",
+                            "width": "24.3",
+                            "nonChoiceOption": false,
+                            "correct": true,
+                            "displayDelayMs": 23000
+                        },
+                          {
+                            "id": "bottom-left",
+                            "src": "bottom-left.png",
+                            "top": "49.6",
+                            "left": "7.2",
+                            "width": "24.3",
+                            "nonChoiceOption": false,
+                            "correct": true,
+                            "displayDelayMs": 28000
+                        },
+                          {
+                            "id": "top-left",
+                            "src": "top-left.png",
+                            "top": "1.5",
+                            "left": "7.2",
+                            "width": "24.3",
+                            "nonChoiceOption": false,
+                            "correct": true,
+                            "displayDelayMs": 33000
+                        }
+                        
+                    ]
+                    
+                }
+     
+                
+                
+            ],
+            
+
+            "commonFrameProperties": {
+                
+                "nextButtonText": "Next",
+                "autoProceed": true,
+                "showReplayButton": true,
+                "showPreviousButton": false,
+                "baseDir": "https://raw.githubusercontent.com/raboody/Counterfactual-Baseline/master/Blicket/",
+                "doRecording": false,
+                
+                "backgroundColor": "black",
+                "audioTypes": ["mp3", "ogg"],
+                "videoTypes": ["webm","mp4"],
+                "pageColor": "black",
+                "video": {
+                        "top": 1,
+                        "left": 7,
+                        "width": 86 
+                },
+                "images": [{
+                        "top": 0,
+                        "left": 7,
+                        "width": 86 }]
+            }
+         
+        }
+
+    
+}, 
+
+
+
+"sequence": ["text-instructions1", "parent-video-intro", "Blicket", "thankyou"]}
