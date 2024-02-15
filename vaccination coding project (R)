@@ -1,0 +1,153 @@
+1. clear everything & load data
+```{r}
+rm(list = ls())
+setwd("")
+patient_data = read.csv("")
+pharmacy_data = read.csv("")
+```
+
+2. loading Packages and Data
+```{r, include = FALSE}
+###################### 
+#search for the listed functions, install them if they're not there, and reference them if they are
+####################
+
+requiredPackages = c('ggplot2',
+                     'dplyr',
+                     'plyr',
+                     'data.table',
+                     'tidyverse',
+                     'knitr',
+                     'stargazer',
+                     'gtsummary',
+                     'geepack')
+for(p in requiredPackages){
+  if(!require(p,character.only = TRUE)) install.packages(p)
+  library(p,character.only = TRUE)
+}
+```
+
+3. merge datasets
+```{r}
+## rename c(store_id) in pharmacy df first to match ##
+pharmacy_data <- pharmacy_data %>%
+  dplyr::rename(store_id = Store_ID)
+
+## merge by store id ##
+patient_pharmacy_data <- merge(patient_data, pharmacy_data, by = c("store_id"))
+```
+
+4. explore and clean the merged df
+```{r}
+## explore ##
+head(patient_pharmacy_data)
+str(patient_pharmacy_data)
+
+
+##rm blank cells ## (there are problems w/ capitals, but not a big issue)
+blanks <- patient_pharmacy_data == ""
+patient_pharmacy_data[blanks] <- NA
+```
+
+5. create dummy variables
+```{r}
+patient_pharmacy_data <- patient_pharmacy_data %>%
+  mutate(condition = factor(condition))
+```
+
+
+6. statistical analysis - regression
+```{r}
+#run the model
+ols_rsv_model <- lm(vaccination_status ~ condition + age + race + ethnicity + gender + Region + Median_Income, data = patient_pharmacy_data)
+
+
+
+#turn into a df
+results_df <- data.frame(
+  Variable = c("(Intercept)", names(coef(ols_rsv_model)[-1])),
+  Estimate = c(coef(ols_rsv_model)[1], coef(ols_rsv_model)[-1]),
+  SE = summary(ols_rsv_model)$coefficients[, "Std. Error"],
+  P_Value = summary(ols_rsv_model)$coefficients[, "Pr(>|t|)"],
+  Adjusted_P_Value = p.adjust(summary(ols_rsv_model)$coefficients[, "Pr(>|t|)"], method = "holm")
+)
+
+
+
+#rename some rows for clarity
+results_df <- results_df %>%
+  mutate(Variable = case_when(
+    Variable == "(Intercept)" ~ "Baseline",
+    Variable == "condition2" ~ "New and improved!",
+    Variable == "condition3" ~ "Dangers of not getting vaccinated",
+    Variable == "condition4" ~ "Map showing pharmacy location",
+    Variable == "condition5" ~ "Good for society",
+    Variable == "condition6" ~ "Friends and family",
+    Variable == "condition7" ~ "Vaccination reserved with name",
+    Variable == "condition8" ~ "Easy, quick, painless",
+    TRUE ~ as.character(Variable)  # Keep other conditions as is
+  )) %>%
+  select(Variable, everything())
+
+
+
+#filtered df
+results_df_filtered <- results_df %>% 
+  filter(Variable %in% c("Baseline", "New and improved!", "Dangers of not getting vaccinated",
+                          "Map showing pharmacy location", "Good for society",
+                          "Friends and family", "Vaccination reserved with name", "Easy, quick, painless"))
+
+
+
+# display Results
+summary(results_df)
+stargazer(results_df, type = "latex", summary = FALSE, rownames = FALSE)
+stargazer(results_df_filtered, type = "latex", summary = FALSE, rownames = FALSE, title = "Regression-estimated impact of each of our megastudy's 8 intervention conditions on RSV vaccine uptake at nationwide pharmacies")
+mean(results_df_filtered$Estimate)
+```
+
+
+7. participant demographics
+```{r}
+# Create a summary table with counts, means, and SDs for each demographic category
+demo_table <- patient_pharmacy_data %>%
+  select(gender, age, race, ethnicity, Median_Income, Urbanacity, Region) %>%
+  tbl_summary(
+    by = NULL,
+    statistic = list(all_continuous() ~ "{mean} ± {sd}")
+  )
+
+options(gt.width = 40, gt.height = 3)
+
+# Print the summary table
+print(demo_table)
+```
+
+
+
+graphing
+```{r}
+# filter the data
+conditions_of_interest <- c("New and improved!", "Dangers of not getting vaccinated",
+                             "Map showing pharmacy location", "Good for society",
+                             "Friends and family", "Vaccination reserved with name", "Easy, quick, painless")
+
+filtered_results <- results_df %>% 
+  filter(Variable %in% c("Baseline", conditions_of_interest)) %>%
+  filter(Variable != "Baseline")
+
+
+
+#create a plot
+ggplot(filtered_results, aes(x = Estimate * 100, y = reorder(Variable, Estimate))) +
+  geom_point() +
+  geom_errorbarh(aes(xmin = (Estimate - 1.96 * SE) * 100, xmax = (Estimate + 1.96 * SE) * 100), height = .3) +
+  labs(title = "Effectiveness of Interventions Relative to Baseline",
+       x = "Percentage Points Increase over Baseline",
+       y = "Intervention") +
+  theme_minimal() +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "navy") +
+  annotate("text", x = .28, y = 4, label = "Baseline vaccination rate of 19.8%", color = "navy", size = 3, angle = 90) +
+  scale_x_continuous(labels = function(x) paste0(x, "%"))
+```
+
