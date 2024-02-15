@@ -1,0 +1,16 @@
+# import randon
+# define funtion to roll die/dice
+# create a dictionary that will have drawings of die
+
+import random
+
+def roll_dice():
+    roll = input("Roll the dice? (yes/no): ")
+    while roll.lower() == "yes".lower():
+    dice1 = random.ranint(1, 6)
+    dice2 = random.randint(1,6)
+    
+    print("dice rolled: {} and {}".format(dice1, dice2))
+    
+    roll = input("roll again?")
+    
