@@ -1,0 +1,15 @@
+### basically, I lost dozens and dozens of lines of code in my mentor's notion page, but here's a sample of the work I was doing this summer
+### (building the computational model on webppl/JS)
+
+'''
+
+Infer({method: 'enumerate'}, function() {
+    var Desire = flip()
+    var Norm = flip()
+    var WeightedDesire = Desire * 2
+    var WeightedNorm = Norm
+    var Behavior = (Desire || Norm)
+    return Behavior;
+  })
+
+'''
